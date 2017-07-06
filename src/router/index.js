@@ -2,8 +2,8 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import CoreLayout from '../layouts/PageLayout/PageLayout'
-import Home from './Home'
-import CounterRoute from './Counter'
+import Home from '@pages/Home'
+import CounterRoute from '@pages/Counter'
 
 const MainRouter = () => (
   <Router>

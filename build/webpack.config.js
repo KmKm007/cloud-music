@@ -7,6 +7,8 @@ const project = require('../project.config')
 const inProject = path.resolve.bind(path, project.basePath)
 const inProjectSrc = (file) => inProject(project.srcDir, file)
 
+const srcPath = `${project.basePath}/${project.srcDir}`
+
 const __DEV__ = project.env === 'development'
 const __TEST__ = project.env === 'test'
 const __PROD__ = project.env === 'production'
@@ -23,7 +25,7 @@ const config = {
   devtool: project.sourcemaps ? 'source-map' : false,
   output: {
     path: inProject(project.outDir),
-    filename: __DEV__ ? '[name].js' : '[name].[chunkhash].js',
+    filename: __DEV__ ? '[name].js' : 'js/[name].[chunkhash].js',
     publicPath: project.publicPath,
   },
   resolve: {
@@ -32,6 +34,15 @@ const config = {
       'node_modules',
     ],
     extensions: ['*', '.js', '.jsx', '.json'],
+    alias: {
+      '@pages': `${srcPath}/pages`,
+      '@actions': `${srcPath}/redux/actions`,
+      '@actionTypes': `${srcPath}/redux/actionTypes`,
+      '@store': `${srcPath}/redux/store`,
+      '@reducers': `${srcPath}/redux/reducers`,
+      '@styles': `${srcPath}/styles`,
+      '@src': '${srcPath}'
+    }
   },
   externals: project.externals,
   module: {
@@ -45,6 +56,7 @@ const config = {
       __PROD__,
     }, project.globals))
   ],
+
 }
 
 // JavaScript
