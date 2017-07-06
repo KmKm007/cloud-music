@@ -1,6 +1,9 @@
 import actionTypes from '@actionTypes'
+import { HistoryUtil } from 'kmkm-utils'
 
-const initialState = '/'
+const history = HistoryUtil.getHistory()
+
+const initialState = history.location
 
 function locationChange (state, action) {
   return action.location

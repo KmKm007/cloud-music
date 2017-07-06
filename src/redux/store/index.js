@@ -5,10 +5,12 @@ import thunk from 'redux-thunk'
 
 const middleware = [ thunk ]
 
-if (__DEV__) {
+if (process.env.NODE_ENV === 'development') {
   middleware.push(createLogger())
 }
 
-const store = createStore(reducers, window.devToolsExtension && window.devToolsExtension(), applyMiddleware(...middleware))
+const store = createStore(reducers,
+  window.devToolsExtension && window.devToolsExtension(),
+  applyMiddleware(...middleware))
 
 export default store

@@ -1,24 +1,19 @@
-import { injectReducer } from '../../store/reducers'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import CounterContainer from './containers/counter-container'
+import { mapStateToProps, mapDispatchToProps } from './store'
 
-export default (store) => ({
-  path : 'counter',
-  /*  Async getComponent is only invoked when route matches   */
-  getComponent (nextState, cb) {
-    /*  Webpack - use 'require.ensure' to create a split point
-        and embed an async module loader (jsonp) when bundling   */
-    require.ensure([], (require) => {
-      /*  Webpack - use require callback to define
-          dependencies for bundling   */
-      const Counter = require('./containers/CounterContainer').default
-      const reducer = require('./modules/counter').default
-
-      /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'counter', reducer })
-
-      /*  Return getComponent   */
-      cb(null, Counter)
-
-    /* Webpack named bundle   */
-    }, 'counter')
+class CounterPage extends React.Component {
+  static propTypes = {
+    value: PropTypes.number.isRequired,
+    counterIncrement: PropTypes.func.isRequired
   }
-})
+  render () {
+    return (
+      <CounterContainer {...this.props}/>
+    )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CounterPage)
