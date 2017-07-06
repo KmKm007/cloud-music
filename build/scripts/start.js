@@ -20,4 +20,3 @@ function getIPAdress() {
     }
   }
 }
-console.log(getIPAdress())

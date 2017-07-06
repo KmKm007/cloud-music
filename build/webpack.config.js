@@ -61,6 +61,22 @@ const config = {
 
 // JavaScript
 // ------------------------------------
+
+config.module.rules.push({
+  test: /\.(js|jsx)$/,
+  enforce: 'pre',
+  use: [
+    {
+      options: {
+        formatter: require('react-dev-utils/eslintFormatter')
+      },
+      loader: require.resolve('eslint-loader'),
+    },
+  ],
+  include: srcPath,
+  exclude: [ `${srcPath}/main.js` ]
+})
+
 config.module.rules.push({
   test: /\.(js|jsx)$/,
   exclude: /node_modules/,
