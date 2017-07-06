@@ -27,6 +27,7 @@ const config = {
     path: inProject(project.outDir),
     filename: __DEV__ ? '[name].js' : 'js/[name].[chunkhash].js',
     publicPath: project.publicPath,
+    chunkFilename: 'js/[name].[chunkhash].js'
   },
   resolve: {
     modules: [

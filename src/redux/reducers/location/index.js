@@ -1,5 +1,5 @@
 import actionTypes from '@actionTypes'
-import { HistoryUtil } from 'kmkm-utils'
+import { HistoryUtil } from 'kmkm-utils/dist'
 
 const history = HistoryUtil.getHistory()
 
