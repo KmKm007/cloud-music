@@ -1,0 +1,15 @@
+.player-detail-header {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  border-bottom: #d3d3d3 1px solid;
+}
+
+.go-back {
+  flex: 1 0 15%;
+  text-align: center;
+}
+
+.song-name {
+  flex: 1 0 85%;
+}

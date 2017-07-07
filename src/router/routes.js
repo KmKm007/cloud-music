@@ -13,7 +13,10 @@ const HomeRoute = createBundleRoute(require('bundle-loader?lazy&name=home!@pages
 
 const CounterRoute = createBundleRoute(require('bundle-loader?lazy&name=counter!@pages/Counter'))
 
+const PlayerRoute = require('@pages/player-detail').default
+
 export {
   HomeRoute,
-  CounterRoute
+  CounterRoute,
+  PlayerRoute
 }

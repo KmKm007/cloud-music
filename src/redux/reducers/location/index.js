@@ -1,7 +1,7 @@
 import actionTypes from '@actionTypes'
-import { HistoryUtil } from 'kmkm-utils/dist'
+import { HistoryUtil } from 'kmkm-utils'
 
-const history = HistoryUtil.getHistory()
+const history = HistoryUtil.getHashHistory()
 
 const initialState = history.location
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import PropTypes from 'prop-types'
 import Router from './router'
+import 'normalize.css'
 
 class App extends React.Component {
   static propTypes = {
