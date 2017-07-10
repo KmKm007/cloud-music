@@ -141,23 +141,24 @@ $baseFontSize: .76rem;
 }
 
 .process-bar {
-  width: 78%;
+  width: 100%;
   margin: 0 auto;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
   & span {
     text-align: center;
     color: #fff;
     opacity: .5;
     font-size: 0.74rem;
-    flex: 1 0 20%;
+    flex: 1 0 15%;
   }
 }
 
 .process-control {
-  flex: 1 0 55%;
+  flex: 1 0 65%;
   position: relative;
   height: 100%;
 }
@@ -168,11 +169,15 @@ $baseFontSize: .76rem;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  & div {
+    flex: 1 0 20%;
+    text-align: center;
+    height: 100%;
+  }
   & a {
-    width: 3rem;
-    height: 3rem;
-    display: block;
-
+    width: 50px;
+    height: 50px;
+    display: inline-block;
   }
 }
 
@@ -196,7 +201,7 @@ $baseFontSize: .76rem;
 }
 
 .slider-fill {
-  width: 20%;
+  width: 0%;
   background-color: #e92e35;
 }
 
@@ -204,7 +209,7 @@ $baseFontSize: .76rem;
   $height: 12px;
   position: absolute;
   top: 50%;
-  left: 20%;
+  left: 0%;
   height: $height;
   width: $height;
   margin-top: -$height/2;

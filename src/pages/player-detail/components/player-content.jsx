@@ -2,6 +2,21 @@ import React from 'react'
 import cs from 'classnames'
 
 class PlayerContent extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      process: 0
+    }
+  }
+
+  componentDidMount () {
+    setInterval(() => {
+      this.setState({
+        process: this.state.process + 1
+      })
+    }, 1000)
+  }
+
   render () {
     const { isPlay, handlePlayerPlay, handlePlayerPause } = this.props
     const cdWrapperImg = require('@assets/imgs/cd_wrapper.png')
@@ -41,40 +56,62 @@ class PlayerContent extends React.Component {
             <span>00:30</span>
             <div className="process-control">
               <div className="slider-line" />
-              <div className="slider-fill" />
-              <div className="slider-btn" />
+              <div className="slider-fill" style={{width: `${this.state.process}%`}}/>
+              <div className="slider-btn" style={{left: `${this.state.process}%`}}/>
             </div>
             <span>06:30</span>
           </div>
           <div className="control-bar">
-            <a href="javascript:void(0)"
-              className="control-bar-button"
-              style={{backgroundImage: `url(${modeButtonUrl})`}}
-              onClick={handlePlayerPause}
-            />
-            <a href="javascript:void(0)" className="control-bar-button" style={{backgroundImage: `url(${preButtonUrl})`}}></a>
-            {
-              isPlay
-              ? (
-                <a
-                  href="javascript:void(0)"
-                  className="control-bar-button"
-                  style={{backgroundImage: `url(${pauseButtonUrl})`}}
-                  onClick={handlePlayerPause}
-                />
-              )
-              : (
-                <a
-                  href="javascript:void(0)"
-                  className="control-bar-button"
-                  style={{backgroundImage: `url(${playButtonUrl})`}}
-                  onClick={handlePlayerPlay}
-                />
-              )
-            }
-
-            <a href="javascript:void(0)" className="control-bar-button" style={{backgroundImage: `url(${nextButtonUrl})`}}></a>
-            <a href="javascript:void(0)" className="control-bar-button" style={{backgroundImage: `url(${listButtonUrl})`}}></a>
+            <div>
+              <a
+                href="javascript:void(0)"
+                className="control-bar-button"
+                style={{backgroundImage: `url(${modeButtonUrl})`}}
+                onClick={handlePlayerPause}
+              />
+            </div>
+            <div>
+              <a
+                href="javascript:void(0)"
+                className="control-bar-button"
+                style={{backgroundImage: `url(${preButtonUrl})`}}
+              />
+            </div>
+            <div>
+              {
+                isPlay
+                ? (
+                  <a
+                    href="javascript:void(0)"
+                    className="control-bar-button"
+                    style={{backgroundImage: `url(${pauseButtonUrl})`}}
+                    onClick={handlePlayerPause}
+                  />
+                )
+                : (
+                  <a
+                    href="javascript:void(0)"
+                    className="control-bar-button"
+                    style={{backgroundImage: `url(${playButtonUrl})`}}
+                    onClick={handlePlayerPlay}
+                  />
+                )
+              }
+            </div>
+            <div>
+              <a
+                href="javascript:void(0)"
+                className="control-bar-button"
+                style={{backgroundImage: `url(${nextButtonUrl})`}}
+              />
+            </div>
+            <div>
+              <a
+                href="javascript:void(0)"
+                className="control-bar-button"
+                style={{backgroundImage: `url(${listButtonUrl})`}}
+              />
+            </div>
           </div>
         </div>
       </div>
