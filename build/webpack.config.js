@@ -42,7 +42,8 @@ const config = {
       '@store': `${srcPath}/redux/store`,
       '@reducers': `${srcPath}/redux/reducers`,
       '@styles': `${srcPath}/styles`,
-      '@src': '${srcPath}'
+      '@src': `${srcPath}`,
+      '@assets': `${srcPath}/assets`
     }
   },
   externals: project.externals,
@@ -180,7 +181,7 @@ config.plugins.push(extractStyles)
 // Images
 // ------------------------------------
 config.module.rules.push({
-  test    : /\.(png|jpg|gif)$/,
+  test    : /\.(png|jpe?g|gif)$/,
   loader  : 'url-loader',
   options : {
     limit : 8192,
