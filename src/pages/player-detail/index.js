@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PlayerDetailContainer from './containers/player-detail-container'
 import HistoryUtil from 'kmkm-utils/dist/HistoryUtil'
-import { mapStateToProps } from './store'
+import { mapStateToProps, mapDispatchToProps } from './store'
 import './player-detail.scss'
 
 const history = HistoryUtil.getHashHistory()
@@ -23,4 +23,4 @@ class PlayerDetail extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(PlayerDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerDetail)

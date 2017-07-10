@@ -2,6 +2,7 @@ $baseFontSize: .76rem;
 
 .player-detail {
   height: 100%;
+  overflow: hidden;
 }
 
 .player-detail-header {
@@ -66,6 +67,7 @@ $baseFontSize: .76rem;
 .player-effect {
   position: relative;
   flex: 1 0 70%;
+  overflow: hidden;
 }
 
 .sticker {
@@ -74,9 +76,10 @@ $baseFontSize: .76rem;
   width: 100%;
   height: $width + 3rem;
   overflow: hidden;
+  z-index: 5;
   img {
     position: absolute;
-    top: -0.6rem;
+    top: -1rem;
     right: 34%;
     width: $width;
     height: $width * 3/2;
@@ -86,13 +89,17 @@ $baseFontSize: .76rem;
   }
 }
 
+.sticker-unhold {
+  transform: rotate(0deg) !important;
+}
+
 .cd-wrapper {
   display: flex;
   position: relative;
   height: 83vw;
   width: 83vw;
   padding: .08rem;
-  margin: 5rem auto;
+  margin: 4.4rem auto;
   border-radius: 50%;
   background-color: rgba(107,107,107,0.3);
   justify-content: center;
@@ -131,4 +138,76 @@ $baseFontSize: .76rem;
   100% {
     transform: rotate(360deg);
   }
+}
+
+.process-bar {
+  width: 78%;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & span {
+    text-align: center;
+    color: #fff;
+    opacity: .5;
+    font-size: 0.74rem;
+    flex: 1 0 20%;
+  }
+}
+
+.process-control {
+  flex: 1 0 55%;
+  position: relative;
+  height: 100%;
+}
+
+.control-bar {
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  & a {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+
+  }
+}
+
+.control-bar-button {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.slider-line, .slider-fill {
+  $height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: $height;
+  margin-top: -$height/2;
+}
+
+.slider-line {
+  width: 100%;
+  background-color: #bec2c1;
+}
+
+.slider-fill {
+  width: 20%;
+  background-color: #e92e35;
+}
+
+.slider-btn {
+  $height: 12px;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  height: $height;
+  width: $height;
+  margin-top: -$height/2;
+  background-color: #e92e35;
+  border-radius: 50%;
 }
