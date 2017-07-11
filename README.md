@@ -10,6 +10,7 @@
 $ git clone https://github.com/KmKm007/cloud-music.git
 $ cd cloud-music
 ```
+and then
 
 ```bash
 $ npm install (or `yarn`)
