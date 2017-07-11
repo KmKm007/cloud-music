@@ -1,35 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cs from 'classnames'
+import PlayerProcessBar from './player-process-bar'
+import PlayerControllerBar from './player-control-bar'
 
 class PlayerContent extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      process: 0
-    }
-  }
-
-  componentDidMount () {
-    setInterval(() => {
-      this.setState({
-        process: this.state.process + 1
-      })
-    }, 1000)
+  static propTypes = {
+    isPlay: PropTypes.bool.isRequired,
+    currentSeconds: PropTypes.number.isRequired,
+    totalSeconds: PropTypes.number.isRequired,
+    processPercentage: PropTypes.number.isRequired,
+    handlePlayerPlay: PropTypes.func.isRequired,
+    handlePlayerPause: PropTypes.func.isRequired
   }
 
   render () {
-    const { isPlay, handlePlayerPlay, handlePlayerPause } = this.props
+    const { isPlay, currentSeconds, totalSeconds,
+      processPercentage, handlePlayerPlay, handlePlayerPause } = this.props
     const cdWrapperImg = require('@assets/imgs/cd_wrapper.png')
     const cdWrapperCoverStyle = {
       backgroundImage: `url(${cdWrapperImg})`
     }
     const albumURL = 'http://p1.music.126.net/ivlCltZ5_PHSednttGmLBg==/926888302240122.jpg?param=500y500'
-    const playButtonUrl = require('@assets/imgs/player-play.png')
-    const pauseButtonUrl = require('@assets/imgs/player-pause.png')
-    const preButtonUrl = require('@assets/imgs/player-pre.png')
-    const nextButtonUrl = require('@assets/imgs/player-next.png')
-    const modeButtonUrl = require('@assets/imgs/player-mode.png')
-    const listButtonUrl = require('@assets/imgs/player-list.png')
     return (
       <div className="player-content">
         <div className="player-effect">
@@ -52,67 +44,16 @@ class PlayerContent extends React.Component {
           </div>
         </div>
         <div className="player-wrapper">
-          <div className="process-bar">
-            <span>00:30</span>
-            <div className="process-control">
-              <div className="slider-line" />
-              <div className="slider-fill" style={{width: `${this.state.process}%`}}/>
-              <div className="slider-btn" style={{left: `${this.state.process}%`}}/>
-            </div>
-            <span>06:30</span>
-          </div>
-          <div className="control-bar">
-            <div>
-              <a
-                href="javascript:void(0)"
-                className="control-bar-button"
-                style={{backgroundImage: `url(${modeButtonUrl})`}}
-                onClick={handlePlayerPause}
-              />
-            </div>
-            <div>
-              <a
-                href="javascript:void(0)"
-                className="control-bar-button"
-                style={{backgroundImage: `url(${preButtonUrl})`}}
-              />
-            </div>
-            <div>
-              {
-                isPlay
-                ? (
-                  <a
-                    href="javascript:void(0)"
-                    className="control-bar-button"
-                    style={{backgroundImage: `url(${pauseButtonUrl})`}}
-                    onClick={handlePlayerPause}
-                  />
-                )
-                : (
-                  <a
-                    href="javascript:void(0)"
-                    className="control-bar-button"
-                    style={{backgroundImage: `url(${playButtonUrl})`}}
-                    onClick={handlePlayerPlay}
-                  />
-                )
-              }
-            </div>
-            <div>
-              <a
-                href="javascript:void(0)"
-                className="control-bar-button"
-                style={{backgroundImage: `url(${nextButtonUrl})`}}
-              />
-            </div>
-            <div>
-              <a
-                href="javascript:void(0)"
-                className="control-bar-button"
-                style={{backgroundImage: `url(${listButtonUrl})`}}
-              />
-            </div>
-          </div>
+          <PlayerProcessBar
+            totalSeconds={totalSeconds}
+            currentSeconds={currentSeconds}
+            processPercentage={processPercentage}
+          />
+          <PlayerControllerBar
+            isPlay={isPlay}
+            handlePlayerPlay={handlePlayerPlay}
+            handlePlayerPause={handlePlayerPause}
+          />
         </div>
       </div>
     )

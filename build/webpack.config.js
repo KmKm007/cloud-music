@@ -36,6 +36,7 @@ const config = {
     ],
     extensions: ['*', '.js', '.jsx', '.json'],
     alias: {
+      '@components': `${srcPath}/components`,
       '@pages': `${srcPath}/pages`,
       '@actions': `${srcPath}/redux/actions`,
       '@actionTypes': `${srcPath}/redux/actionTypes`,
@@ -43,7 +44,8 @@ const config = {
       '@reducers': `${srcPath}/redux/reducers`,
       '@styles': `${srcPath}/styles`,
       '@src': `${srcPath}`,
-      '@assets': `${srcPath}/assets`
+      '@assets': `${srcPath}/assets`,
+      '@utils': `${srcPath}/utils`
     }
   },
   externals: project.externals,
@@ -134,7 +136,7 @@ const baseStyleLoader = {
       autoprefixer: {
         add: true,
         remove: true,
-        browsers: ['last 2 versions'],
+        browsers: ['last 3 versions'],
       },
       discardComments: {
         removeAll : true,
@@ -186,6 +188,16 @@ config.module.rules.push({
   options : {
     limit : 8192,
   },
+})
+
+// mp3
+// ------------------------------------
+config.module.rules.push({
+  test: /\.mp3(\?.*)?$/,
+  loader: 'url-loader',
+  options: {
+    limit: 10000
+  }
 })
 
 // Fonts

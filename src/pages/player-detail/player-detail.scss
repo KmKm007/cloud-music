@@ -130,16 +130,6 @@ $baseFontSize: .76rem;
   animation: rotating 10s linear 0.3s infinite;
 }
 
-@keyframes rotating {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .process-bar {
   width: 100%;
   margin: 0 auto;
@@ -203,6 +193,7 @@ $baseFontSize: .76rem;
 .slider-fill {
   width: 0%;
   background-color: #e92e35;
+  transition: width 1000ms linear;
 }
 
 .slider-btn {
@@ -215,4 +206,15 @@ $baseFontSize: .76rem;
   margin-top: -$height/2;
   background-color: #e92e35;
   border-radius: 50%;
+  transition: left 1000ms linear;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

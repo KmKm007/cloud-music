@@ -11,3 +11,12 @@ export function playerPause () {
     type: actionTypes.PLAYER_PAUSE
   }
 }
+
+export function changePlayedTime (second) {
+  return {
+    type: actionTypes.CHANGE_PLAYED_TIME,
+    payload: {
+      second
+    }
+  }
+}
