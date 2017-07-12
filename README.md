@@ -2,8 +2,6 @@
 
 模仿移动端APP开发的单页面Web App网易云播放器
 
-在线演示地址：[Demo](http://www.baidu.com)
-
 ## Installation
 
 ```bash
